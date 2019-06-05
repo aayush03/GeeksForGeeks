@@ -21,6 +21,7 @@ public class CheckIfBinaryTreeIsHeightBalanced {
         root2.right = new Node(30);
         root2.left.left = new Node(40);
         root2.left.right = new Node(60);
+
         CheckIfBinaryTreeIsHeightBalanced treeIsBalanced = new CheckIfBinaryTreeIsHeightBalanced();
         System.out.println(treeIsBalanced.isBalancedBinaryTree(root1));
         System.out.println(treeIsBalanced.isBalancedBinaryTree(root2));
