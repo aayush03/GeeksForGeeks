@@ -31,7 +31,9 @@ public class VerticalOrderTraversal {
         getVerticalOrder(root, horizontalDistance, m);
 
         for (Map.Entry<Integer, List<Integer>> entry : m.entrySet()) {
-            System.out.println(entry.getValue());
+            List list = entry.getValue();
+            for (int i = 0; i < list.size(); i++)
+                System.out.print(list.get(i) + " ");
         }
     }
 
