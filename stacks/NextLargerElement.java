@@ -6,15 +6,13 @@ import java.util.Stack;
 public class NextLargerElement {
 
     public static void main(String[] args){
-
         String input1 = "1 3 2 4";
-
         computeNextLargerElements(input1);
+
         System.out.println();
 
         String input2 = "4 3 2 1";
         computeNextLargerElements(input2);
-
     }
 
     private static void computeNextLargerElements(String input2) {
