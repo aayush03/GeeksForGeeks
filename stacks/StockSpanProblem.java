@@ -5,52 +5,32 @@ import java.util.Stack;
 public class StockSpanProblem {
 
     public static void main(String[] args) {
-
+        int[] arr = new int[]{100, 80, 60, 70, 60, 75, 85};
+        computeStockSpan(arr, arr.length);
+        System.out.println();
+        int[] arr1 = new int[]{10, 4, 5, 90, 120, 80};
+        computeStockSpan(arr1, arr1.length);
     }
 
-    private static void printStockSpan(int[] arr,int n) {
-        class Pair{
-            int spanOfPrice;
-            int price;
+    private static void computeStockSpan(int[] stockPrices, int n) {
+        int[] span = new int[n];
 
-            public Pair(int spanOfPrice, int price) {
-                this.spanOfPrice = spanOfPrice;
-                this.price = price;
-            }
+        Stack<Integer> stack = new Stack<>();
+        span[0] = 1;
+        stack.push(0);
+
+        for (int i = 1; i < n; i++) {
+            while (!stack.isEmpty() && stockPrices[i] >= stockPrices[stack.peek()])
+                stack.pop();
+
+            span[i] = stack.isEmpty() ? (i + 1) : (i - stack.peek());
+
+            stack.push(i);
         }
 
-        Stack<Pair> stack = new Stack<>();
-        stack.push(new Pair(1,arr[0]));
-        for (int i=1; i<n;i++){
-
-                while (arr[i]>stack.peek().price){
-                    Pair pair = stack.pop();
-                    System.out.println();
-                }
-        }
-
-        Stack<Integer> span = new Stack<>();
-
-        for(int i=0;i<n; i++) {
-            if(span.isEmpty())
-                span.push(1);
-            else {
-                if(arr[i-1]<=arr[i]){
-                    Stack<Integer> temp = new Stack<>();
-                    int k = i;
-                    while(arr[k-1]<=arr[k]){
-                    int x = span.pop();
-                }
-                span.push(span.peek()+1);
-            }
-                else
-            span.push(1);
+        for (int i : span) {
+            System.out.print(i + " ");
         }
     }
 
-         while(!span.isEmpty()) {
-        System.out.print(span.pop()+" ");
-    }
-         System.out.println();
-}
 }
