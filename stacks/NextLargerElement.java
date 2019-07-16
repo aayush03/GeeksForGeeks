@@ -15,8 +15,8 @@ public class NextLargerElement {
         computeNextLargerElements(input2);
     }
 
-    private static void computeNextLargerElements(String input2) {
-        Long[] array1 = Arrays.stream(input2.split("\\s"))
+    private static void computeNextLargerElements(String inputString) {
+        Long[] array1 = Arrays.stream(inputString.split("\\s"))
                 .map(Long::valueOf)
                 .toArray(Long[]::new);
         printNextLargerElement(array1, array1.length);
