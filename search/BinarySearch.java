@@ -7,10 +7,10 @@ public class BinarySearch {
         int[] arr = new int[]{2, 4, 6, 8, 10, 15, 20, 44, 67};
 
         BinarySearch search = new BinarySearch();
-        int result=search.binarySearch(arr, 0, arr.length-1, 44);
+        int result = search.binarySearch(arr, 0, arr.length - 1, 44);
 
-        if (result>-1) {
-            System.out.println("Element found at index::"+result);
+        if (result > -1) {
+            System.out.println("Element found at index::" + result);
         } else {
             System.out.println("Element not found");
         }
