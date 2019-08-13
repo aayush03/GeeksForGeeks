@@ -22,6 +22,13 @@ public class SortByQuickSort {
         }
     }
 
+    /**
+     * This function takes last element as pivot, places
+     * the pivot element at its correct position in sorted
+     * array, and places all smaller (smaller than pivot)
+     * to left of pivot and all greater elements to right
+     * of pivot
+     */
     protected static int partition(int[] arr, int left, int right) {
         int pivot = arr[right];
         int i = (left - 1); // index of smaller element
