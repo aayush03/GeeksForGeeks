@@ -6,7 +6,7 @@ package trees;
  * to them. That is the distance of the common ancestor from the nodes
  * N1 and N2 should be least possible.
  */
-public class LowestCommonAncestor {
+public class LowestCommonAncestorInBinaryTree {
 
     private static class Node {
         int data;
@@ -26,7 +26,7 @@ public class LowestCommonAncestor {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
-        LowestCommonAncestor tree = new LowestCommonAncestor();
+        LowestCommonAncestorInBinaryTree tree = new LowestCommonAncestorInBinaryTree();
         System.out.println(tree.findLCA(root, 4,5).data);
         System.out.println(tree.findLCA(root, 4,6).data);
         System.out.println(tree.findLCA(root, 3,4).data);
