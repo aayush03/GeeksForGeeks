@@ -30,30 +30,30 @@ public class CheckIfDirectedGraphHasCycle extends Graph {
     }
 
     private boolean isCyclic() {
-        boolean[] recStack = new boolean[noOfVertices];
+        boolean[] recursionStack = new boolean[noOfVertices];
         for (int i = 0; i < noOfVertices; i++)
-            if (isCyclic(i, recStack))
+            if (isCyclic(i, recursionStack))
                 return true;
         return false;
     }
 
-    private boolean isCyclic(int currIndex, boolean[] recStack) {
-        if (recStack[currIndex])
+    private boolean isCyclic(int currIndex, boolean[] recursionStack) {
+        if (recursionStack[currIndex])
             return true;
 
         if (visitedNodes[currIndex])
             return false;
 
         visitedNodes[currIndex] = true;
-        recStack[currIndex] = true;
+        recursionStack[currIndex] = true;
 
         List<Integer> children = adjacencyList.get(currIndex);
 
         for (int c : children)
-            if (isCyclic(c, recStack))
+            if (isCyclic(c, recursionStack))
                 return true;
 
-        recStack[currIndex] = false;
+        recursionStack[currIndex] = false;
 
         return false;
     }
