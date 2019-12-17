@@ -6,8 +6,28 @@ public class MaximumSubArraySum {
         int arr[] = {2, 3, 4, 5, 7};
         int n = arr.length;
 
-        System.out.println("Maximum contiguous sum is " +
-                maxSubArraySum(arr, 0, n - 1));
+        int[] nums = new int[]{-2, 1};
+        int[] nums1 = new int[]{-2, -1};
+        /*System.out.println("Maximum contiguous sum is " +
+                maxSubArraySum(arr, 0, n - 1));*/
+
+        System.out.println("Maximum contiguous sum is " + maxSubArray(nums) + " true / false ? " + (maxSubArray(nums) == 1));
+        System.out.println("Maximum contiguous sum is " + maxSubArray(nums1) + " true / false ? " + (maxSubArray(nums1) == -1));
+    }
+
+    private static int maxSubArray(int[] nums) {
+        int size = nums.length;
+        int max_so_far = Integer.MIN_VALUE, max_ending_here = 0;
+
+        for (int i = 0; i < size; i++)
+        {
+            max_ending_here = max_ending_here + nums[i];
+            if (max_so_far < max_ending_here)
+                max_so_far = max_ending_here;
+            if (max_ending_here < 0)
+                max_ending_here = 0;
+        }
+        return max_so_far;
     }
 
     private static int maxSubArraySum(int[] arr, int left, int right) {
