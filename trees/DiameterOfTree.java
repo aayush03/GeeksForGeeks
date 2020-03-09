@@ -36,6 +36,8 @@ public class DiameterOfTree {
         }
     }
 
+    int res = 0;
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -44,6 +46,32 @@ public class DiameterOfTree {
         root.left.right = new Node(5);
         DiameterOfTree tree = new DiameterOfTree();
         System.out.println("Diameter of treee = "+tree.diameter(root));
+
+        Node node = new Node(1);
+        node.left = new Node(2);
+        node.right = new Node(3);
+        node.right.left = new Node(4);
+        node.right.right = new Node(6);
+        node.right.left.right = new Node(5);
+        node.right.left.right.left = new Node(7);
+        tree.diameterOfTreeEfficient(node);
+        System.out.println("Diameter of tree = " + tree.res);
+
+    }
+
+    /**
+     * Time Complexity: O(N)
+     */
+    private int diameterOfTreeEfficient(Node root) {
+        if (root == null)
+            return 0;
+
+        int lHeight = diameterOfTreeEfficient(root.left);
+        int rHeight = diameterOfTreeEfficient(root.right);
+
+        res = Math.max(res, 1 + lHeight + rHeight);
+
+        return  1 + Math.max(lHeight, rHeight);
     }
 
     private int diameter(Node root) {
