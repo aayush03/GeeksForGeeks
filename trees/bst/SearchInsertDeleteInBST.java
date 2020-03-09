@@ -27,6 +27,19 @@ public class SearchInsertDeleteInBST {
         System.out.println(tree.search(root, key));
         tree.delete(root, key);
         System.out.println(tree.search(root, key));
+
+        Node node = new Node(8);
+        node.left = new Node(3);
+        node.right = new Node(10);
+        node.left.right = new Node(6);
+        node.left.right.left = new Node(4);
+        node.left.right.right = new Node(7);
+        node.right.right = new Node(14);
+        node.right.right.left = new Node(13);
+
+        tree.delete(node, 8);
+
+        System.out.println(node.data);
     }
 
     private boolean search(Node root, int key) {

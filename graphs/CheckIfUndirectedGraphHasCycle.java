@@ -52,10 +52,8 @@ public class CheckIfUndirectedGraphHasCycle extends Graph {
             if (!visitedNodes[temp]) {
                 if (isCyclic(temp, currIndex))
                     return true;
-            }
-
-                else if (temp != parent)
-                    return true;
+            } else if (temp != parent)
+                return true;
 
         }
         return false;

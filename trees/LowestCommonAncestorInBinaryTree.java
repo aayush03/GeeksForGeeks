@@ -27,10 +27,10 @@ public class LowestCommonAncestorInBinaryTree {
         root.right.right = new Node(7);
 
         LowestCommonAncestorInBinaryTree tree = new LowestCommonAncestorInBinaryTree();
-        System.out.println(tree.findLCA(root, 4,5).data);
-        System.out.println(tree.findLCA(root, 4,6).data);
-        System.out.println(tree.findLCA(root, 3,4).data);
-        System.out.println(tree.findLCA(root, 2,4).data);
+        System.out.println(tree.findLCA(root, 4, 5).data);
+        System.out.println(tree.findLCA(root, 4, 6).data);
+        System.out.println(tree.findLCA(root, 3, 4).data);
+        System.out.println(tree.findLCA(root, 2, 4).data);
     }
 
     private Node findLCA(Node root, int n1, int n2) {
@@ -44,6 +44,6 @@ public class LowestCommonAncestorInBinaryTree {
 
         if (left_lca != null && right_lca != null)
             return root;
-        return left_lca !=null ? left_lca : right_lca;
+        return left_lca != null ? left_lca : right_lca;
     }
 }
