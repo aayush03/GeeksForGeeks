@@ -1,52 +1,40 @@
 package trees.n.ary;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 public class N_AryPreAndPostOrderTraversal {
 
     public List<Integer> preorder(Node root) {
-        if(root == null)
-            return new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        list = traversePreOrder(root, list);
+        return list;
+    }
 
-        LinkedList<Node> stack = new LinkedList<>();
-        List<Integer> res = new ArrayList<>();
-        stack.add(root);
-
-        while(!stack.isEmpty()) {
-            Node curr = stack.pollLast();
-            res.add(curr.val);
-            Collections.reverse(curr.children);
-
-            for(Node node : curr.children) {
-                stack.add(node);
+    public List<Integer> traversePreOrder(Node root, List<Integer> list){
+        if(root != null){
+            list.add(root.val);
+            for(Node node : root.children){
+                traversePreOrder(node, list);
             }
         }
-
-        return res;
+        return list;
     }
 
     public List<Integer> postorder(Node root) {
-        if(root == null)
-            return new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        list = traversePostOrder(root, list);
+        return list;
+    }
 
-        LinkedList<Node> stack = new LinkedList<>();
-        LinkedList<Integer> res = new LinkedList<>();
-
-        stack.add(root);
-
-        while(!stack.isEmpty()) {
-            Node node = stack.pollLast();
-            res.addFirst(node.val);
-
-            for(Node child : node.children) {
-                stack.add(child);
+    private List<Integer> traversePostOrder(Node root, List<Integer> list) {
+        if (root != null) {
+            for (Node child : root.children) {
+                traversePostOrder(child, list);
             }
+            list.add(root.val);
         }
-
-        return res;
+        return list;
     }
 }
 
