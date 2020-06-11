@@ -1,4 +1,4 @@
-package dynamic.programming.longestt.common.subsequence.variant;
+package dynamic.programming.longestt.common.subsequence.variants;
 
 /**
  * @author Aayush Srivastava
