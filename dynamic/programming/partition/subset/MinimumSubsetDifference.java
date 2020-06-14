@@ -57,6 +57,7 @@ public class MinimumSubsetDifference {
 
         boolean[][] t = new boolean[n + 1][finalRangeUpperBound + 1];
 
+        //Initializing first column as true
         for (int i = 0; i <= n; i++)
             t[i][0] = true;
 

@@ -10,7 +10,7 @@ public class CountOfSubsetsWithGivenSum {
         System.out.println("No of subsets with given sum : " + new CountOfSubsetsWithGivenSum().countSubsetsWithGivenSum(new int[]{1, 5, 11, 5}, 11));
     }
 
-    private int countSubsetsWithGivenSum(int[] arr, int sum) {
+    public int countSubsetsWithGivenSum(int[] arr, int sum) {
         int n = arr.length;
 
         int[][] t = new int[n + 1][sum + 1];
