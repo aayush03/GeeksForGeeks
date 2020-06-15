@@ -32,6 +32,7 @@ public class TargetSum {
 
     public static void main(String[] args) {
         System.out.println("No of ways to achieve Target Sum : " + new TargetSum().findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3));
+        System.out.println("No of ways to achieve Target Sum : " + new TargetSum().findTargetSumWays(new int[]{1, 1, 2, 3}, 1));
         System.out.println("No of ways to achieve Target Sum : " + new TargetSum().findTargetSumWays(new int[]{1, 2, 7, 9, 981}, 1000000000));
         System.out.println("No of ways to achieve Target Sum : " + new TargetSum().findTargetSumWays(new int[]{2, 107, 109, 113, 127, 131, 137, 3, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 47, 53}, 1000));
     }
