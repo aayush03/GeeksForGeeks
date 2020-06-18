@@ -34,14 +34,17 @@ public class Knapsack_0_1 {
     }
 
     private int knapsackMemo(int[] wt, int[] val, int W, int n) {
+        if (n == 0 || W == 0)
+            return 0;
+
         if (memo[n][W] != -1) //implies that value has already been memoized
             return memo[n][W];
 
         if (wt[n - 1] <= W)
-            return memo[n][W] = Math.max(val[n - 1] + knapsack(wt, val, W - wt[n - 1], n - 1), //choose this
-                    knapsack(wt, val, W, n - 1)); // don't choose this
+            return memo[n][W] = Math.max(val[n - 1] + knapsackMemo(wt, val, W - wt[n - 1], n - 1), //choose this
+                    knapsackMemo(wt, val, W, n - 1)); // don't choose this
 
-        return memo[n][W] = knapsack(wt, val, W, n - 1); // default option since this item can't be chosen because its weight is more than total weight allowed
+        return memo[n][W] = knapsackMemo(wt, val, W, n - 1); // default option since this item can't be chosen because its weight is more than total weight allowed
     }
 
     private void initializeMemoTable(int W, int n) {

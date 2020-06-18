@@ -8,6 +8,7 @@ public class CountOfSubsetsWithGivenSum {
     public static void main(String[] args) {
         System.out.println("No of subsets with given sum : " + new CountOfSubsetsWithGivenSum().countSubsetsWithGivenSum(new int[]{2, 3, 5, 6, 8, 10, 3}, 10));
         System.out.println("No of subsets with given sum : " + new CountOfSubsetsWithGivenSum().countSubsetsWithGivenSum(new int[]{1, 5, 11, 5}, 11));
+        System.out.println("No of subsets with given sum : " + new CountOfSubsetsWithGivenSum().countSubsetsWithGivenSum(new int[]{4, 3, 2, 3, 5, 2, 1}, 5));
     }
 
     public int countSubsetsWithGivenSum(int[] arr, int sum) {
