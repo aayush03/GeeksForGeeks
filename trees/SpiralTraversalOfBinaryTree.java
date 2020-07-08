@@ -29,6 +29,8 @@ public class SpiralTraversalOfBinaryTree {
     }
 
     private void printSpiralTraversal(Node node) {
+        if (node == null)
+            return;
         Queue<Node> queue = new LinkedList<>();
 
         ((LinkedList<Node>) queue).push(node);

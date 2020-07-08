@@ -25,6 +25,7 @@ public class MaximumPathSumFromAnyNode {
         node1.right.right = new Node(4);
 
         System.out.println(findMaxSum(node1));
+        System.out.println(findMaxSumOptimized(node1));
 
         Node root = new Node(10);
         root.left = new Node(2);
@@ -32,6 +33,24 @@ public class MaximumPathSumFromAnyNode {
         root.right.right = new Node(-2);
 
         System.out.println(findMaxSum(root));
+        System.out.println(findMaxSumOptimized(root));
+    }
+
+    static int maxValue;
+    static int findMaxSumOptimized(Node node)
+    {
+        //your code goes here
+        maxValue = Integer.MIN_VALUE;
+        maxPathDown(node);
+        return maxValue;
+    }
+
+    private static int maxPathDown(Node node) {
+        if (node == null) return 0;
+        int left = Math.max(0, maxPathDown(node.left));
+        int right = Math.max(0, maxPathDown(node.right));
+        maxValue = Math.max(maxValue, left + right + node.data);
+        return Math.max(left, right) + node.data;
     }
 
     private static int findMaxSum(Node node) {

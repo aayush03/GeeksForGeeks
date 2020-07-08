@@ -1,6 +1,8 @@
 package trees;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 public class ConstructTreeFromPostOrderAndInOrder {
@@ -22,6 +24,34 @@ public class ConstructTreeFromPostOrderAndInOrder {
         ConstructTreeFromPostOrderAndInOrder tree = new ConstructTreeFromPostOrderAndInOrder();
         tree.levelOrderTraversalLineByLine(tree.buildTree(in,post,n));
     }
+
+    private Node buildTreeFromPostAndInOrderOptimizedUsingCaching(int[] in, int[] post, int n) {
+        Index pIndex = new Index();
+        pIndex.index = n - 1; //last element in post order will always be the root element
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++)
+            map.put(in[i], i);
+
+        return buildTreeFromPostAndInOrder(in, post, 0, n - 1, pIndex, map);
+    }
+
+    private Node buildTreeFromPostAndInOrder(int[] in, int[] post, int inStart, int inEnd, Index pIndex, Map<Integer, Integer> map) {
+        if (inStart > inEnd)
+            return null;
+        int curr = post[pIndex.index];
+        Node node = new Node(curr);
+        (pIndex.index)--;
+
+        if (inStart == inEnd)
+            return node;
+        int iIndex = map.get(curr);
+
+        node.right = buildTreeFromPostAndInOrder(in, post, iIndex + 1, inEnd, pIndex, map);
+        node.left = buildTreeFromPostAndInOrder(in, post, inStart, iIndex - 1, pIndex, map);
+
+        return node;
+    }
+
 
     private Node buildTree(int in[], int post[], int n) {
         Index pIndex = new Index();
