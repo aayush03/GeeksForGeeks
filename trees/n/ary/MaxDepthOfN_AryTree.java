@@ -1,30 +1,31 @@
 package trees.n.ary;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Queue;
 
 public class MaxDepthOfN_AryTree {
 
-    public List<Integer> preorder(Node root) {
-        if(root == null)
-            return new ArrayList<>();
+    public int maxDepth(Node root) {
+        if (root == null)
+            return 0;
+        Queue<Node> q = new LinkedList<>();
 
-        LinkedList<Node> stack = new LinkedList<>();
-        List<Integer> res = new ArrayList<>();
-        stack.add(root);
+        q.add(root);
+        int count = 0;
 
-        while(!stack.isEmpty()) {
-            Node curr = stack.pollLast();
-            res.add(curr.val);
-            Collections.reverse(curr.children);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Node curr = q.poll();
 
-            for(Node node : curr.children) {
-                stack.add(node);
+                for (Node node : curr.children) {
+                    q.add(node);
+                }
             }
+            count++;
         }
 
-        return res;
+
+        return count;
     }
 }
