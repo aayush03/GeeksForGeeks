@@ -1,6 +1,8 @@
 package trees;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PathsDownwardThatAddToGivenSum {
@@ -91,6 +93,48 @@ public class PathsDownwardThatAddToGivenSum {
         // restore the map, as the recursion goes from the bottom to the top
         map.put(sum, map.get(sum) - 1);
         return res;
+    }
+
+
+    /**
+     * BRUTE FORCE APPROACH :
+     * Time Complexity : O(n^2)
+     */
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
+    }
+
+    int countOfPaths = 0;
+    List<Integer> list = new ArrayList<>();
+    int findPath(TreeNode root, int sum) {
+        getSum(root, sum);
+
+        return countOfPaths;
+    }
+
+    private void getSum(TreeNode root, int sum) {
+        if (root == null)
+            return;
+        list.add(root.val);
+
+        getSum(root.left, sum);
+        getSum(root.right, sum);
+
+        int temp = 0;
+        //start summing values from last since we want to find paths downwards
+        for (int i = list.size() - 1; i >= 0; i--) {
+            temp += list.get(i);
+            if (temp == sum)
+                countOfPaths++;
+        }
+
+        list.remove(list.size() - 1);
     }
 
 }
