@@ -6,9 +6,10 @@ package greedy;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.TreeMap;
+
+/**
+ * https://www.youtube.com/watch?v=uJ8BAQ8lASE
+ */
 
 /**
  * Given an array nums sorted in ascending order, return true if and only if you can split it into 1 or more
