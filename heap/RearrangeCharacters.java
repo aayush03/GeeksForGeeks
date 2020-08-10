@@ -4,6 +4,11 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+/**
+ * Given a string S with repeated characters (only lowercase). The task is to rearrange characters in a string such that no two adjacent characters are same.
+ *
+ * Note : It may be assumed that the string has only lowercase English alphabets.
+ */
 public class RearrangeCharacters {
 
     private static final int MAX_CHAR = 26;
