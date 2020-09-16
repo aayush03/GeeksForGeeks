@@ -28,27 +28,23 @@ public class ValidateStackSequences {
 
     public static void main(String[] args) {
         int[] pushed = {1, 2, 3, 4, 5}, popped = {4, 5, 3, 2, 1};
+        System.out.println(new ValidateStackSequences().validateStackSequencesWithoutExtraSpace(pushed, popped));
     }
 
+
+    /**
+     * The idea is to use the original pushed array as a stack itself
+     */
     public boolean validateStackSequencesWithoutExtraSpace(int[] pushed, int[] popped) {
-
         int i = 0, j = 0;
-        // Here we are modifying the pushed array
-        for (int num : pushed) {
-            pushed[i] = num;
-            // When a match is found, we lower the i index
-            while (i >= 0 && pushed[i] == popped[j]) {
-                i -= 1;
-                j += 1;
+        for (int x : pushed) {
+            pushed[i++] = x;
+            while (i > 0 && pushed[i - 1] == popped[j]) {
+                --i;
+                ++j;
             }
-            /**
-             * This line serves two purposes
-             * 1.) If the match is not there we want to iterate through pushed array
-             * 2.) If match found, (Looks like a deletion), we are inserting at the place which maintains the order
-             */
-            i += 1;
-        }
 
+        }
         return i == 0;
     }
 
