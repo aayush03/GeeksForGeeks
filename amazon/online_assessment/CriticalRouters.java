@@ -12,7 +12,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * You are given an undirected connected graph. An articulation point (or cut vertex) is defined as a vertex which, when removed along with associated edges, makes the graph disconnected (or more precisely, increases the number of connected components in the graph). The task is to find all articulation points in the given graph.
+ * You are given an undirected connected graph. An articulation point (or cut vertex) is defined as a vertex which,
+ * when removed along with associated edges, makes the graph disconnected (or more precisely, increases the number of
+ * connected components in the graph). The task is to find all articulation points in the given graph.
  *
  * Input:
  * The input to the function/method consists of three arguments:
@@ -46,10 +48,10 @@ public class CriticalRouters {
         Map<Integer, Set<Integer>> graph = new HashMap<>();
 
         //initialize graph
-        for(int i=0;i<numNodes;i++) graph.put(i, new HashSet<>());
+        for (int i = 0; i < numNodes; i++) graph.put(i, new HashSet<>());
 
         //add edges to graph
-        for(int[] edge: edges) {
+        for (int[] edge : edges) {
             int u = edge[0];
             int v = edge[1];
 
@@ -60,12 +62,12 @@ public class CriticalRouters {
         List<Integer> result = new ArrayList<>();
 
         //calculate critical routers
-        for(int nodeToRemove=0;nodeToRemove<numNodes;nodeToRemove++) {
+        for (int nodeToRemove = 0; nodeToRemove < numNodes; nodeToRemove++) {
 
             //remove each node and its edges and check if entire graph is connected
             Set<Integer> nodeEdges = graph.get(nodeToRemove);
             int source = 0;
-            for(int edge: nodeEdges) {
+            for (int edge : nodeEdges) {
                 graph.get(edge).remove(nodeToRemove);
                 source = edge;
             }
@@ -73,23 +75,23 @@ public class CriticalRouters {
             HashSet<Integer> visited = new HashSet<>();
             dfs(graph, source, visited);
 
-            if(visited.size()!=numNodes-1) {
+            if (visited.size() != numNodes - 1) {
                 //this node was a critical router
                 result.add(nodeToRemove);
             }
 
             //add the edges back
-            for(int edge: nodeEdges) graph.get(edge).add(nodeToRemove);
+            for (int edge : nodeEdges) graph.get(edge).add(nodeToRemove);
         }
         return result;
     }
 
-    public void dfs (Map<Integer, Set<Integer>> graph, int source, Set<Integer> visited) {
-        if(visited.contains(source)) return;
+    public void dfs(Map<Integer, Set<Integer>> graph, int source, Set<Integer> visited) {
+        if (visited.contains(source)) return;
 
         visited.add(source);
 
-        for(int child: graph.get(source)) dfs(graph, child, visited);
+        for (int child : graph.get(source)) dfs(graph, child, visited);
     }
 
     public static void main(String[] args) {
@@ -101,31 +103,31 @@ public class CriticalRouters {
 
         List<Integer> res = obj.getCriticalRouters(numRouters1, numLinks1, links1);
 
-        for(int i: res) System.out.print(i + " ");
+        for (int i : res) System.out.print(i + " ");
         System.out.println();
 
         int numRouters2 = 5;
         int numLinks2 = 5;
-        int[][] links2 = {{1,2}, {0,1}, {2,0}, {0,3}, {3,4}};
+        int[][] links2 = {{1, 2}, {0, 1}, {2, 0}, {0, 3}, {3, 4}};
 
         List<Integer> res2 = obj.getCriticalRouters(numRouters2, numLinks2, links2);
-        for(int i: res2) System.out.print(i + " ");
+        for (int i : res2) System.out.print(i + " ");
         System.out.println();
 
         int numRouters3 = 4;
         int numLinks3 = 4;
-        int[][] links3 = {{0,1},{1,2},{2,3}};
+        int[][] links3 = {{0, 1}, {1, 2}, {2, 3}};
 
         List<Integer> res3 = obj.getCriticalRouters(numRouters3, numLinks3, links3);
-        for(int i: res3) System.out.print(i + " ");
+        for (int i : res3) System.out.print(i + " ");
         System.out.println();
 
         int numRouters4 = 7;
         int numLinks4 = 8;
-        int[][] links4 = {{0,1},{0,2},{1,2},{1,3},{1,4},{1,6},{3,5},{4,5}};
+        int[][] links4 = {{0, 1}, {0, 2}, {1, 2}, {1, 3}, {1, 4}, {1, 6}, {3, 5}, {4, 5}};
 
         List<Integer> res4 = obj.getCriticalRouters(numRouters4, numLinks4, links4);
-        for(int i: res4) System.out.print(i + " ");
+        for (int i : res4) System.out.print(i + " ");
         System.out.println();
     }
 }
