@@ -40,7 +40,7 @@ public class TrappingRainWater {
                     ans += left - A[l];
                 }
             } else {
-                //add volum until an edge larger than the right volume
+                //add volume until an edge larger than the right volume
                 while (l < r && A[--r] <= right) {
                     ans += right - A[r];
                 }

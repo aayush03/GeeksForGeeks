@@ -21,6 +21,9 @@ public class LongestPalindromicSubstring {
 
     private int lo, maxLen;
 
+    /**
+     * Time Complexity : O(n^2) in worst case
+     */
     public String longestPalindrome(String s) {
         int len = s.length();
         if (len < 2)
